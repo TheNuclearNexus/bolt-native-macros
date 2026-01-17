@@ -24,33 +24,16 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      - name: Cache poetry
-        id: cache-poetry
-        uses: actions/cache@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          path: ~/.local
-          key: poetry-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ env.POETRY_VERSION }}
-      - name: Install poetry
-        if: steps.cache-poetry.outputs.cache-hit != 'true'
-        uses: snok/install-poetry@v1
-        with:
-          version: ${{ env.POETRY_VERSION }}
-          virtualenvs-in-project: true
-      - name: Cache venv
-        id: cache-venv
-        uses: actions/cache@v4
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ env.POETRY_VERSION }}-${{ hashFiles('poetry.lock') }}
-          restore-keys: |
-            venv-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ env.POETRY_VERSION }}-
+          enable-cache: true
       - name: Install dependencies
-        if: steps.cache-venv.outputs.cache-hit != 'true'
-        run: poetry install
+        run: uv sync --dev
       - name: Run tests
-        run: poetry run pytest -v
+        run: uv run pytest -v
       - name: Check formatting
-        run: poetry run black --check bolt_native_macros tests
+        run: uv run black --check bolt_native_macros tests
       - name: Release
         if: |
           github.repository == 'TheNuclearNexus/bolt-native-macros'
@@ -62,4 +45,4 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "action@github.com"
-          poetry run semantic-release publish -v DEBUG -D commit_author="github-actions <action@github.com>"
+          uv run semantic-release publish -v DEBUG -D commit_author="github-actions <action@github.com>"
