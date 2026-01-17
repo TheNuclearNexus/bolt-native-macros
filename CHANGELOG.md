@@ -1,7 +1,15 @@
 # CHANGELOG
 
 
+## v0.2.1 (2026-01-17)
+
+
 ## v0.2.0 (2026-01-17)
+
+### Bug Fixes
+
+- Env var
+  ([`bcea2ba`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/bcea2baeeb330a85b1ce5fc77eeb5baf0bea9a40))
 
 ### Features
 
