@@ -1,7 +1,15 @@
 # CHANGELOG
 
 
+## v0.3.0 (2026-01-17)
+
+
 ## v0.2.3 (2026-01-17)
+
+### Features
+
+- Readme
+  ([`679dd07`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/679dd07060ef659dee3ad6c50955429eceeb882c))
 
 
 ## v0.2.2 (2026-01-17)
