@@ -43,7 +43,7 @@ jobs:
           uv run semantic-release version
           
           # 2. Extract version info for subsequent steps
-          echo "tag=$(uv run semantic-release print-version --tag)" >> $GITHUB_OUTPUT
+          echo "tag=$(uv run semantic-release version --print-tag)" >> $GITHUB_OUTPUT
           
           # 3. Check if a release actually happened
           if [ -d "dist" ] && [ "$(ls -A dist)" ]; then

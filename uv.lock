@@ -133,7 +133,7 @@ wheels = [
 
 [[package]]
 name = "bolt-native-macros"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
