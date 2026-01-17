@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.2.0 (2026-01-17)
+
+### Features
+
+- Use semantic release action
+  ([`ee77950`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/ee779509b19ae04050e3f00ad85ed9186f410d1b))
+
+- Use semantic release action
+  ([`d7c5bc1`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/d7c5bc1505f06e229d97316fb6ddeb545d8827b0))
+
+
 ## v0.1.0 (2026-01-17)
 
 ### Bug Fixes
@@ -45,3 +56,6 @@
 
 - Semantic release
   ([`6e75653`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/6e756531f17d20c60b35de7e1ba0453d946130d7))
+
+- Use semantic release action
+  ([`3bc5f94`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/3bc5f942d38136a335f2a3e4ca8ad7a497d4829c))
