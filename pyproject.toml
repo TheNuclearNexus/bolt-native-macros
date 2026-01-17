@@ -33,6 +33,7 @@ build_command = "uv build"
 # 'version_variable' and 'version_toml' are replaced by the 'version_declaration' list
 version_variables = ["bolt_native_macros/__init__.py:__version__"]
 version_toml = ["pyproject.toml:project.version"]
+commit_author = "github-actions <action@github.com>"
 
 [tool.semantic_release.publish]
 # This ensures it uses the build_command defined above

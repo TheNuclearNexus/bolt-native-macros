@@ -45,5 +45,5 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "action@github.com"
-          uv run semantic-release version --vlog DEBUG --define commit_author="github-actions <action@github.com>"
+          uv run semantic-release version
           uv run semantic-release publish
