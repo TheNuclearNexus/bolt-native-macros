@@ -23,13 +23,13 @@ from .parse import (
 from .patches import apply_patches
 from .serialize import CommandSerializer, MacroConverter, MacroMutator
 
-
 def get_parsers(parsers: dict[str, Parser]):
     parse_nbt: Parser = parsers["nbt"]
 
-    make_nbt_parser = lambda parser: AlternativeParser(
-        [MacroParser(("nbt", "string"), AstMacroNbtArgument), parser]
-    )
+    def make_nbt_parser(parser: Parser):
+        return AlternativeParser(
+            [MacroParser(("nbt", "string"), AstMacroNbtArgument), parser]
+        )
 
     new_parsers = {
         "typed_macro": parse_typed_macro,

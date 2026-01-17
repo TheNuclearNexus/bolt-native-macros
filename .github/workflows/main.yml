@@ -33,7 +33,7 @@ jobs:
       - name: Run tests
         run: uv run pytest -v
       - name: Check formatting
-        run: uv run black --check bolt_native_macros tests
+        run: uv run ruff check
       - name: Release
         if: |
           github.repository == 'TheNuclearNexus/bolt-native-macros'

@@ -5,7 +5,10 @@ from nbtlib import Base
 
 
 class MacroRepresentation: ...
+
+
 class StringWithMacro(str): ...
+
 
 @dataclass
 class MacroTag(Base):

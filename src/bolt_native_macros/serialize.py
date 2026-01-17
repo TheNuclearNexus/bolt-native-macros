@@ -170,5 +170,3 @@ class MacroMutator(MutatingReducer):
             )
 
         return node
-
-
