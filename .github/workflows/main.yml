@@ -11,7 +11,7 @@ env:
   POETRY_VERSION: "1.6.1"
 
 jobs:
-  main:
+  release:
     name: Test and release
     runs-on: ubuntu-latest
 
