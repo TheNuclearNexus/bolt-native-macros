@@ -20,7 +20,7 @@ dev = [
     "lectern>=0.34.0",
     "pytest>=9.0.2",
     "pytest-insta>=0.4.1",
-    "python-semantic-release~=7.33.0",
+    "python-semantic-release>=9.21.0",
     "ruff>=0.14.13",
 ]
 
