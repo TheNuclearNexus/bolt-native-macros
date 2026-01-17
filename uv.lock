@@ -7,12 +7,35 @@ resolution-markers = [
 ]
 
 [[package]]
+name = "aegis-core"
+version = "1.9.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "bolt" },
+    { name = "lsprotocol" },
+    { name = "mecha" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/45/bf/53695fed231abd437518f5d2a394944c31ada4a88995c153e64c74d4f7db/aegis_core-1.9.3.tar.gz", hash = "sha256:da2915a66cadf67c2e9f8f1ca59081e064c6a663ab5153139eb300477531c97e", size = 6053, upload-time = "2025-12-22T22:57:49.611Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fb/5e/e43255698648d800d6e8ae0c5e9e65126d2c70ac8d5b13c59323a4cf396b/aegis_core-1.9.3-py3-none-any.whl", hash = "sha256:5923b0c2af524d0f304df2f286ae5b4ce05cf40e01c10d720f79ec6ccb5227bf", size = 8941, upload-time = "2025-12-22T22:57:48.7Z" },
+]
+
+[[package]]
 name = "annotated-types"
 version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/ee/67/531ea369ba64dcff5ec9c3402f9f51bf748cec26dde048a2f973a4eea7f5/annotated_types-0.7.0.tar.gz", hash = "sha256:aff07c09a53a08bc8cfccb9c85b05f1aa9a2a6f23728d790723543408344ce89", size = 16081, upload-time = "2024-05-20T21:33:25.928Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/78/b6/6307fbef88d9b5ee7421e68d78a9f162e0da4900bc5f5793f6d3d0e34fb8/annotated_types-0.7.0-py3-none-any.whl", hash = "sha256:1f02e8b43a8fbbc3f3e0d4f0f4bfc8131bcb4eebe8849b8e5c773f3a1c582a53", size = 13643, upload-time = "2024-05-20T21:33:24.1Z" },
+]
+
+[[package]]
+name = "attrs"
+version = "25.4.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/6b/5c/685e6633917e101e5dcb62b9dd76946cbb57c26e133bae9e0cd36033c0a9/attrs-25.4.0.tar.gz", hash = "sha256:16d5969b87f0859ef33a48b35d55ac1be6e42ae49d5e853b597db70c35c57e11", size = 934251, upload-time = "2025-10-06T13:54:44.725Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3a/2a/7cc015f5b9f5db42b7d48157e23356022889fc354a2813c15934b7cb5c0e/attrs-25.4.0-py3-none-any.whl", hash = "sha256:adcf7e2a1fb3b36ac48d97835bb6d8ade15b8dcce26aba8bf1d14847b57a3373", size = 67615, upload-time = "2025-10-06T13:54:43.17Z" },
 ]
 
 [[package]]
@@ -66,32 +89,14 @@ wheels = [
 name = "bolt"
 version = "0.49.2"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version < '3.14'",
-]
 dependencies = [
     { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "mecha", version = "0.101.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "mecha" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/20/38/afaf49e657d52f90b139aeb54f087b4e09749fa46d60043f6796916da2a8/bolt-0.49.2.tar.gz", hash = "sha256:3f957178aeeecdeaa1bb5e61345692a282e79ab929bf5db01cb459336e566180", size = 53560, upload-time = "2025-06-17T22:03:16.187Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/fc/6d/54081d432e9c22163d994a82388c2c03f5568a24348697ce3db82215b45d/bolt-0.49.2-py3-none-any.whl", hash = "sha256:8f831a4fa9de127d7c6c4e973dd024da7231ec5ede74037db88578b93825891c", size = 59441, upload-time = "2025-06-17T22:03:15.13Z" },
-]
-
-[[package]]
-name = "bolt"
-version = "0.50.1"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.14'",
-]
-dependencies = [
-    { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-    { name = "mecha", version = "0.102.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/b4/3c/53d8b950adbba601fdf4a0d2f1f1da652ca5f5879e040da2d8d8a020f9db/bolt-0.50.1.tar.gz", hash = "sha256:5bcb0ee76c87c0504fdf52fb79cf71a9acd0e681cc6df33fa9829039d8277ab8", size = 52341, upload-time = "2026-01-17T13:59:47.578Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3f/9b/fa2699f4d991fa7b83b61daecb0c7a533487358448191bf4eefbcef89ce7/bolt-0.50.1-py3-none-any.whl", hash = "sha256:89c5505050d4431f0c0a6fed28691c626d0439c8d2432c3fdfdc185dbcddf592", size = 59733, upload-time = "2026-01-17T13:59:48.527Z" },
 ]
 
 [[package]]
@@ -101,10 +106,8 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
     { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-    { name = "bolt", version = "0.49.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "bolt", version = "0.50.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-    { name = "mecha", version = "0.101.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "mecha", version = "0.102.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "bolt" },
+    { name = "mecha" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/3c/67c21c5a0ee61b461bd992c31b8da0283433f4f7233e0afe70f1717d2a12/bolt_control_flow-0.3.0.tar.gz", hash = "sha256:570fdac25e590d238ae02d5d286855cbece6880da20a9214ce90a7f32b6664a3", size = 8379, upload-time = "2024-02-23T23:32:45.725Z" }
 wheels = [
@@ -118,12 +121,10 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
     { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-    { name = "bolt", version = "0.49.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "bolt", version = "0.50.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "bolt" },
     { name = "bolt-control-flow" },
     { name = "frozendict" },
-    { name = "mecha", version = "0.101.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "mecha", version = "0.102.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "mecha" },
     { name = "nbtlib" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3c/75/9146bfed6cd26f5b0bea02588de79ebc2683c0134e8e6cfbf26e752014e9/bolt_expressions-0.17.0.tar.gz", hash = "sha256:f9895d9c493822780c794d5c68cf80c5fd3de0671ab8e5e0865654165349ee42", size = 42153, upload-time = "2024-08-10T18:48:03.593Z" }
@@ -133,18 +134,19 @@ wheels = [
 
 [[package]]
 name = "bolt-native-macros"
-version = "0.2.0"
+version = "0.2.3"
 source = { editable = "." }
 dependencies = [
     { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
     { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-    { name = "bolt", version = "0.49.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "bolt", version = "0.50.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-    { name = "mecha", version = "0.101.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "mecha", version = "0.102.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "bolt" },
+    { name = "mecha" },
 ]
 
 [package.optional-dependencies]
+aegis = [
+    { name = "aegis-core" },
+]
 bolt-expressions = [
     { name = "bolt-expressions" },
 ]
@@ -161,12 +163,13 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "aegis-core", marker = "extra == 'aegis'", specifier = ">=1.9.3" },
     { name = "beet", specifier = ">=0.112.2" },
     { name = "bolt", specifier = ">=0.49.2" },
     { name = "bolt-expressions", marker = "extra == 'bolt-expressions'", specifier = ">=0.17.0" },
     { name = "mecha", specifier = ">=0.101.0" },
 ]
-provides-extras = ["bolt-expressions"]
+provides-extras = ["bolt-expressions", "aegis"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -175,6 +178,19 @@ dev = [
     { name = "pytest-insta", specifier = ">=0.4.1" },
     { name = "python-semantic-release", specifier = ">=9.21.0" },
     { name = "ruff", specifier = ">=0.14.13" },
+]
+
+[[package]]
+name = "cattrs"
+version = "25.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "attrs" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/6e/00/2432bb2d445b39b5407f0a90e01b9a271475eea7caf913d7a86bcb956385/cattrs-25.3.0.tar.gz", hash = "sha256:1ac88d9e5eda10436c4517e390a4142d88638fe682c436c93db7ce4a277b884a", size = 509321, upload-time = "2025-10-07T12:26:08.737Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d8/2b/a40e1488fdfa02d3f9a653a61a5935ea08b3c2225ee818db6a76c7ba9695/cattrs-25.3.0-py3-none-any.whl", hash = "sha256:9896e84e0a5bf723bc7b4b68f4481785367ce07a8a02e7e9ee6eb2819bc306ff", size = 70738, upload-time = "2025-10-07T12:26:06.603Z" },
 ]
 
 [[package]]
@@ -415,6 +431,19 @@ wheels = [
 ]
 
 [[package]]
+name = "lsprotocol"
+version = "2023.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "attrs" },
+    { name = "cattrs" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9d/f6/6e80484ec078d0b50699ceb1833597b792a6c695f90c645fbaf54b947e6f/lsprotocol-2023.0.1.tar.gz", hash = "sha256:cc5c15130d2403c18b734304339e51242d3018a05c4f7d0f198ad6e0cd21861d", size = 69434, upload-time = "2024-01-09T17:21:12.625Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/37/2351e48cb3309673492d3a8c59d407b75fb6630e560eb27ecd4da03adc9a/lsprotocol-2023.0.1-py3-none-any.whl", hash = "sha256:c75223c9e4af2f24272b14c6375787438279369236cd568f596d4951052a60f2", size = 70826, upload-time = "2024-01-09T17:21:14.491Z" },
+]
+
+[[package]]
 name = "markdown-it-py"
 version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -520,32 +549,14 @@ wheels = [
 name = "mecha"
 version = "0.101.0"
 source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version < '3.14'",
-]
 dependencies = [
     { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
-    { name = "tokenstream", marker = "python_full_version < '3.14'" },
+    { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "tokenstream" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/00/40/d0e25c36a6793bff6fa9ced487ee81fc69acae06838154cb2804b8388192/mecha-0.101.0.tar.gz", hash = "sha256:3fcf91c0ad9b73f43728df74ad9da9b311bcc15e8594167be1c47cb862e8ce43", size = 139327, upload-time = "2025-12-06T18:55:14.402Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8a/e4/848841f9a2523d63f22e967bf57cb5e398eb3e2e920d9acb726eb4c1ebd9/mecha-0.101.0-py3-none-any.whl", hash = "sha256:be66abc4c91957f4ff37dd85af7c19500dc8cdb899118c1d0c5254ac87b5e35a", size = 165726, upload-time = "2025-12-06T18:55:12.668Z" },
-]
-
-[[package]]
-name = "mecha"
-version = "0.102.2"
-source = { registry = "https://pypi.org/simple" }
-resolution-markers = [
-    "python_full_version >= '3.14'",
-]
-dependencies = [
-    { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
-    { name = "tokenstream", marker = "python_full_version >= '3.14'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/05/4f/95aacb9479f7a7904196ec6066849c162c46d45ba1b4205b5bdd64704c17/mecha-0.102.2.tar.gz", hash = "sha256:8cccb5eceb80b3dc25d4bcec099ef2632d4cd33a9a8af95b2d43efdc8af0dc79", size = 552769, upload-time = "2026-01-17T20:37:35.763Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/dc/db/38a8d8ef8b494d87b2aabb660220877c78d7c66ed1522094a58665d338e8/mecha-0.102.2-py3-none-any.whl", hash = "sha256:28fb7cd17330b844dd740a33a5b1d1734038acc8657ef90ed14ae726454e89c7", size = 587674, upload-time = "2026-01-17T20:37:33.847Z" },
 ]
 
 [[package]]

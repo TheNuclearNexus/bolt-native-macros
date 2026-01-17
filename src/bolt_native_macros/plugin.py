@@ -1,3 +1,4 @@
+from contextlib import suppress
 from beet import Context
 from bolt import Runtime
 from mecha import AlternativeParser, Mecha, Parser
@@ -67,6 +68,10 @@ conversions = {
 
 
 def beet_default(ctx: Context):
+    with suppress(ImportError):
+        from .aegis import setup_aegis
+        ctx.require(setup_aegis)
+
     apply_patches()
 
     mc = ctx.inject(Mecha)
