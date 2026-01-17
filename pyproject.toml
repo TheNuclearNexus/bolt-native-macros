@@ -17,7 +17,6 @@ bolt-expressions = [
 
 [dependency-groups]
 dev = [
-    "isort>=7.0.0",
     "lectern>=0.34.0",
     "pytest>=9.0.2",
     "pytest-insta>=0.4.1",
@@ -25,15 +24,20 @@ dev = [
     "ruff>=0.14.13",
 ]
 
-[tool.isort]
-profile = "black"
-
 [tool.semantic_release]
-branch = "main"
-version_variable = ["bolt_native_macros/__init__.py:__version__"]
-version_toml = "pyproject.toml:project.version"
+# In v9, 'branch' is now part of the 'branches' list
+branches = ["main"]
 major_on_zero = false
 build_command = "uv build"
+
+# 'version_variable' and 'version_toml' are replaced by the 'version_declaration' list
+version_variables = ["bolt_native_macros/__init__.py:__version__"]
+version_toml = ["pyproject.toml:project.version"]
+
+[tool.semantic_release.publish]
+# This ensures it uses the build_command defined above
+dist_glob_patterns = ["dist/*"]
+upload_to_vcs_release = true
 
 [build-system]
 requires = ["uv_build>=0.9.26,<0.10.0"]
