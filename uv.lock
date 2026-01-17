@@ -128,6 +128,43 @@ wheels = [
 ]
 
 [[package]]
+name = "bolt-control-flow"
+version = "0.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "bolt", version = "0.49.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "bolt", version = "0.50.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "mecha", version = "0.101.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "mecha", version = "0.102.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/50/3c/67c21c5a0ee61b461bd992c31b8da0283433f4f7233e0afe70f1717d2a12/bolt_control_flow-0.3.0.tar.gz", hash = "sha256:570fdac25e590d238ae02d5d286855cbece6880da20a9214ce90a7f32b6664a3", size = 8379, upload-time = "2024-02-23T23:32:45.725Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c1/24/23d3083266c1cb9b8b7bc8320a18c24ed38af519536a208b79e78cd5a672/bolt_control_flow-0.3.0-py3-none-any.whl", hash = "sha256:de2a6a0b9cd3a4f21466c07d22277ef07995484a2f7caded137ace4a4b5944f7", size = 10009, upload-time = "2024-02-23T23:32:44.197Z" },
+]
+
+[[package]]
+name = "bolt-expressions"
+version = "0.17.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "beet", version = "0.112.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "beet", version = "0.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "bolt", version = "0.49.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "bolt", version = "0.50.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "bolt-control-flow" },
+    { name = "frozendict" },
+    { name = "mecha", version = "0.101.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "mecha", version = "0.102.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "nbtlib" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3c/75/9146bfed6cd26f5b0bea02588de79ebc2683c0134e8e6cfbf26e752014e9/bolt_expressions-0.17.0.tar.gz", hash = "sha256:f9895d9c493822780c794d5c68cf80c5fd3de0671ab8e5e0865654165349ee42", size = 42153, upload-time = "2024-08-10T18:48:03.593Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/dd/95/c696151938eeea5fa57eac7fc84423c0481ff84002e8af74b0aae9e41818/bolt_expressions-0.17.0-py3-none-any.whl", hash = "sha256:367e1976418404866b07a809bdff9c06608314f9f6895eaf3dcd2fe00f69750f", size = 46965, upload-time = "2024-08-10T18:48:01.744Z" },
+]
+
+[[package]]
 name = "bolt-native-macros"
 version = "0.1.0"
 source = { virtual = "." }
@@ -138,6 +175,11 @@ dependencies = [
     { name = "bolt", version = "0.50.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
     { name = "mecha", version = "0.101.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
     { name = "mecha", version = "0.102.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+]
+
+[package.optional-dependencies]
+bolt-expressions = [
+    { name = "bolt-expressions" },
 ]
 
 [package.dev-dependencies]
@@ -155,8 +197,10 @@ dev = [
 requires-dist = [
     { name = "beet", specifier = ">=0.112.2" },
     { name = "bolt", specifier = ">=0.49.2" },
+    { name = "bolt-expressions", marker = "extra == 'bolt-expressions'", specifier = ">=0.17.0" },
     { name = "mecha", specifier = ">=0.101.0" },
 ]
+provides-extras = ["bolt-expressions"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -298,6 +342,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/6a/ab/88d67f02024700b48cd8232579ad1316aa9df2272c63049c27cc094229d6/dotty_dict-1.3.1.tar.gz", hash = "sha256:4b016e03b8ae265539757a53eba24b9bfda506fb94fbce0bee843c6f05541a15", size = 7699, upload-time = "2022-07-09T18:50:57.727Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1a/91/e0d457ee03ec33d79ee2cd8d212debb1bc21dfb99728ae35efdb5832dc22/dotty_dict-1.3.1-py3-none-any.whl", hash = "sha256:5022d234d9922f13aa711b4950372a06a6d64cb6d6db9ba43d0ba133ebfce31f", size = 7014, upload-time = "2022-07-09T18:50:55.058Z" },
+]
+
+[[package]]
+name = "frozendict"
+version = "2.4.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/90/b2/2a3d1374b7780999d3184e171e25439a8358c47b481f68be883c14086b4c/frozendict-2.4.7.tar.gz", hash = "sha256:e478fb2a1391a56c8a6e10cc97c4a9002b410ecd1ac28c18d780661762e271bd", size = 317082, upload-time = "2025-11-11T22:40:14.251Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/38/74/f94141b38a51a553efef7f510fc213894161ae49b88bffd037f8d2a7cb2f/frozendict-2.4.7-py3-none-any.whl", hash = "sha256:972af65924ea25cf5b4d9326d549e69a9a4918d8a76a9d3a7cd174d98b237550", size = 16264, upload-time = "2025-11-11T22:40:12.836Z" },
 ]
 
 [[package]]

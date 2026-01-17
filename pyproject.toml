@@ -10,6 +10,11 @@ dependencies = [
     "mecha>=0.101.0",
 ]
 
+[project.optional-dependencies]
+bolt-expressions = [
+    "bolt-expressions>=0.17.0",
+]
+
 [dependency-groups]
 dev = [
     "black>=25.12.0",
