@@ -28,7 +28,7 @@ dev = [
 major_on_zero = false
 build_command = "uv build"
 
-version_variables = ["bolt_native_macros/__init__.py:__version__"]
+version_variables = ["src/bolt_native_macros/__init__.py:__version__"]
 version_toml = ["pyproject.toml:project.version"]
 commit_author = "github-actions <action@github.com>"
 
