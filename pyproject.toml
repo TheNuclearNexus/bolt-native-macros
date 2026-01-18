@@ -15,7 +15,7 @@ bolt-expressions = [
     "bolt-expressions>=0.17.0",
 ]
 aegis = [
-    "aegis-core>=1.9.3",
+    "aegis-core>=1.11.0",
 ]
 
 [dependency-groups]
