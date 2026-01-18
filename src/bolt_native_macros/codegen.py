@@ -5,7 +5,7 @@ from bolt import Accumulator, visit_generic, visit_single
 from mecha import AstNode, Visitor, rule
 
 from .ast import AstMacroArgument, AstMacroExpression, AstMacroStringWrapper
-from .typing import MacroTag, StringWithMacro
+from .typing import MacroTag, QuotedStringWithMacro
 
 
 def ast_to_macro(macro: AstMacroArgument):
@@ -18,7 +18,7 @@ def make_macro_string():
 
     Kind of hacky but works well
     """
-    return StringWithMacro
+    return QuotedStringWithMacro
 
 
 @dataclass

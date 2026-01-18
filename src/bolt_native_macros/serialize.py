@@ -5,6 +5,7 @@ from beet.core.utils import required_field
 from bolt import AstFormatString
 from mecha import (
     AstCommand,
+    AstLiteral,
     AstNbtPath,
     AstNbtPathKey,
     AstNode,
@@ -21,12 +22,18 @@ from .ast import (
     AstMacroArgument,
     AstMacroCoordinateArgument,
     AstMacroNbtArgument,
+    AstMacroNbtCompoundKey,
     AstMacroNbtPathArgument,
     AstMacroNbtPathKeyArgument,
     AstMacroRange,
     AstMacroStringWrapper,
 )
-from .typing import MacroRepresentation, MacroTag, StringWithMacro
+from .typing import (
+    MacroRepresentation,
+    MacroTag,
+    QuotedStringWithMacro,
+    StringWithMacro,
+)
 
 
 def serialize_macro(_self: NbtSerializer, tag: MacroTag):
@@ -46,8 +53,10 @@ class MacroConverter:
     node_type: type
 
     def __call__(self, obj: Any, node: AstNode) -> AstNode:
-        if isinstance(obj, StringWithMacro):
+        if isinstance(obj, QuotedStringWithMacro):
             return self.node_type.from_value(obj)
+        if isinstance(obj, StringWithMacro):
+            return AstLiteral.from_value(obj)
         return self.base_converter(obj, node)
 
 
@@ -96,7 +105,9 @@ class CommandSerializer(Visitor):
                 result[start_index] = "$"
                 break
 
-    def default(self, argument: AstMacroArgument, result: list[str]):
+    def default(
+        self, argument: AstMacroArgument | AstMacroNbtCompoundKey, result: list[str]
+    ):
         string = argument.parser == "string"
         if string:
             result.append('"')
@@ -136,6 +147,10 @@ class CommandSerializer(Visitor):
                 result.append(sep)
             sep = "."
             yield component
+
+    @rule(AstMacroNbtCompoundKey)
+    def nbt_compound_key(self, node: AstMacroNbtCompoundKey, result: list[str]):
+        self.default(node, result)
 
     @rule(AstMacroRange)
     def range(self, node: AstMacroRange, result: list[str]):

@@ -101,7 +101,7 @@ wheels = [
 
 [[package]]
 name = "bolt-native-macros"
-version = "0.4.0"
+version = "0.5.0"
 source = { editable = "." }
 dependencies = [
     { name = "beet" },
@@ -138,7 +138,7 @@ provides-extras = ["bolt-expressions", "aegis"]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "lectern", specifier = ">=0.34.0" },
+    { name = "lectern", specifier = ">=0.35.0" },
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-insta", specifier = ">=0.4.1" },
     { name = "python-semantic-release", specifier = ">=9.21.0" },

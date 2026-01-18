@@ -7,6 +7,9 @@ from nbtlib import Base
 class MacroRepresentation: ...
 
 
+class QuotedStringWithMacro(str): ...
+
+
 class StringWithMacro(str): ...
 
 

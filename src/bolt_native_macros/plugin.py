@@ -14,6 +14,7 @@ from .ast import (
 )
 from .codegen import MacroCodegen, ast_to_macro, make_macro_string
 from .parse import (
+    MacroNbtParser,
     MacroNbtPathParser,
     MacroParser,
     MacroRangeParser,
@@ -23,6 +24,7 @@ from .parse import (
 )
 from .patches import apply_patches
 from .serialize import CommandSerializer, MacroConverter, MacroMutator
+
 
 def get_parsers(parsers: dict[str, Parser]):
     parse_nbt: Parser = parsers["nbt"]
@@ -43,7 +45,7 @@ def get_parsers(parsers: dict[str, Parser]):
         "greedy": macro(parsers, "greedy", priority=True),
         "entity": macro(parsers, "entity", priority=True),
         "nbt": make_nbt_parser(parsers["nbt"]),
-        "nbt_compound_entry": make_nbt_parser(parsers["nbt_compound_entry"]),
+        "nbt_compound_entry": MacroNbtParser(parsers["nbt_compound_entry"]),
         "nbt_list_or_array_element": make_nbt_parser(
             parsers["nbt_list_or_array_element"]
         ),
@@ -70,6 +72,7 @@ conversions = {
 def beet_default(ctx: Context):
     with suppress(ImportError):
         from .aegis import setup_aegis
+
         ctx.require(setup_aegis)
 
     apply_patches()
