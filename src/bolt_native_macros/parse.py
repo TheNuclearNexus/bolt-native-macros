@@ -7,6 +7,8 @@ from mecha import (
     AlternativeParser,
     AstChildren,
     AstMacroLineVariable,
+    AstNbtCompoundEntry,
+    AstNbtCompoundKey,
     AstNbtPath,
     AstNbtPathKey,
     NbtPathParser,
@@ -16,9 +18,12 @@ from mecha import (
 from mecha.utils import string_to_number
 from tokenstream import InvalidSyntax, TokenStream, set_location
 
+from .typing import StringWithMacro
+
 from .ast import (
     AstMacroArgument,
     AstMacroCoordinateArgument,
+    AstMacroNbtCompoundKey,
     AstMacroNbtPathArgument,
     AstMacroNbtPathKeyArgument,
     AstMacroRange,
@@ -64,6 +69,48 @@ class MacroParser:
 
 
 @dataclass
+class MacroNbtParser:
+    nbt_parser: Parser
+
+    def __call__(self, stream: TokenStream) -> AstNbtCompoundEntry:
+        """Parse nbt compound entry."""
+        with stream.checkpoint() as commit:
+            macro_arg: AstMacroArgument = delegate("typed_macro", stream)
+            commit()
+
+        if commit.rollback:
+            return self.nbt_parser(stream)
+
+        key_node = AstMacroNbtCompoundKey(
+            value=StringWithMacro(f"$({macro_arg.name})"),
+            name=macro_arg.name,
+            parser=macro_arg.parser,
+        )
+        key_node = set_location(key_node, macro_arg)
+
+        stream.expect("colon")
+
+        value_node = delegate("nbt", stream)
+        entry_node = AstNbtCompoundEntry(key=key_node, value=value_node)
+
+        return set_location(entry_node, key_node, value_node)
+
+
+def parse_macro_compound_entry(self, stream: TokenStream) -> AstNbtCompoundEntry:
+    """Parse nbt compound entry with a macro key."""
+    key = stream.expect_any("number", "string", "quoted_string")
+    key_node = AstNbtCompoundKey(value=self.quote_helper.unquote_string(key))
+    key_node = set_location(key_node, key)
+
+    stream.expect("colon")
+
+    value_node = self.recursive_parser(stream)
+
+    entry_node = AstNbtCompoundEntry(key=key_node, value=value_node)
+    return set_location(entry_node, key_node, value_node)
+
+
+@dataclass
 class MacroNbtPathParser(NbtPathParser):
     """Parser for nbt paths."""
 
@@ -81,22 +128,24 @@ class MacroNbtPathParser(NbtPathParser):
 
             while not components or stream.get("dot"):
                 with stream.checkpoint() as commit:
-                    macro: AstMacroArgument = delegate("typed_macro", stream)
+                    macro_arg: AstMacroArgument = delegate("typed_macro", stream)
 
-                    if not macro.parser or macro.parser == "string":
+                    if not macro_arg.parser or macro_arg.parser == "string":
                         components.append(
                             set_location(
                                 AstMacroNbtPathKeyArgument(
-                                    name=macro.name, parser="string"
+                                    name=macro_arg.name, parser="string"
                                 ),
-                                macro,
+                                macro_arg,
                             )
                         )
-                    elif macro.parser == "nbt":
+                    elif macro_arg.parser == "nbt":
                         components.append(
                             set_location(
-                                AstMacroNbtPathArgument(name=macro.name, parser="nbt"),
-                                macro,
+                                AstMacroNbtPathArgument(
+                                    name=macro_arg.name, parser="nbt"
+                                ),
+                                macro_arg,
                             )
                         )
 
@@ -129,17 +178,17 @@ class MacroRangeParser:
             return string_to_number(number.value)
 
         with stream.checkpoint() as commit:
-            macro: AstMacroArgument = delegate("typed_macro", stream)
+            macro_arg: AstMacroArgument = delegate("typed_macro", stream)
 
-            if macro.parser and macro.parser != "numeric":
+            if macro_arg.parser and macro_arg.parser != "numeric":
                 raise ValueError(
-                    f"Invalid macro type, received {macro.parser} expected numeric"
+                    f"Invalid macro type, received {macro_arg.parser} expected numeric"
                 )
 
             commit()
 
         if not commit.rollback:
-            return macro
+            return macro_arg
 
         return None
 

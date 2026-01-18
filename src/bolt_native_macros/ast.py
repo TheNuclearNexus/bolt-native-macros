@@ -2,7 +2,15 @@ from dataclasses import dataclass, field
 from typing import Any, Literal
 
 from beet.core.utils import required_field
-from mecha import AstGreedy, AstMessage, AstNbtValue, AstNode, AstString, AstWord
+from mecha import (
+    AstGreedy,
+    AstMessage,
+    AstNbtCompoundKey,
+    AstNbtValue,
+    AstNode,
+    AstString,
+    AstWord,
+)
 
 from .typing import MacroRepresentation, MacroTag
 
@@ -67,6 +75,12 @@ class AstNbtValueWithMacro(AstNbtValue, MacroRepresentation):
     @classmethod
     def from_value(cls, value: Any) -> "AstNbtValueWithMacro":
         return cls(value=value)
+
+
+@dataclass(frozen=True, slots=True)
+class AstMacroNbtCompoundKey(AstNbtCompoundKey, MacroRepresentation):
+    name: str = required_field()
+    parser: str | None = required_field()
 
 
 @dataclass(frozen=True, slots=True)
