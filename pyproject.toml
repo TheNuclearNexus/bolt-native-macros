@@ -20,7 +20,7 @@ aegis = [
 
 [dependency-groups]
 dev = [
-    "lectern>=0.34.0",
+    "lectern>=0.35.0",
     "pytest>=9.0.2",
     "pytest-insta>=0.4.1",
     "python-semantic-release>=9.21.0",
