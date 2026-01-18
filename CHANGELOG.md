@@ -1,7 +1,34 @@
 # CHANGELOG
 
 
+## v0.4.1 (2026-01-18)
+
+### Bug Fixes
+
+- Bump aegis-core
+  ([`7e7eae6`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/7e7eae617161d2dd2b525b3a3dd44f8356bab323))
+
+- Bump snapshot
+  ([`a4f8dfa`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/a4f8dfa95d1779b2c96f3f4f4b8d1fe5bdcadb3c))
+
+### Chores
+
+- Bump .python-version
+  ([`8088c27`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/8088c27f49689023183fca137d091e3ce12b508c))
+
+- Bump workflow python
+  ([`0c474af`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/0c474af3606efd916854e96662fd1d2ff845dcee))
+
+- Remove --all-groups
+  ([`b266586`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/b266586870276669a253a971fea88c15a446095b))
+
+
 ## v0.4.0 (2026-01-17)
+
+### Bug Fixes
+
+- Bump beet/mecha/bolt deps
+  ([`7adb9a5`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/7adb9a5e46bdf7dbd6b348b4210ca41665d3af42))
 
 
 ## v0.3.0 (2026-01-17)
