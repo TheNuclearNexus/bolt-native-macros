@@ -1,7 +1,20 @@
 # CHANGELOG
 
 
+## v0.5.1 (2026-01-18)
+
+### Bug Fixes
+
+- Parsing macro keys in compounds via parser magic
+  ([`d9b846b`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/d9b846b17db3c574e6d02f20a5042dc5d3097f7d))
+
+
 ## v0.5.0 (2026-01-18)
+
+### Chores
+
+- Minor things
+  ([`74ce8da`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/74ce8da1924da1ccadc817d0968a67bd29cae296))
 
 
 ## v0.4.1 (2026-01-18)
