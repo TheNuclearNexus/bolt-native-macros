@@ -1,6 +1,9 @@
 # CHANGELOG
 
 
+## v0.5.0 (2026-01-18)
+
+
 ## v0.4.1 (2026-01-18)
 
 ### Bug Fixes
@@ -21,6 +24,11 @@
 
 - Remove --all-groups
   ([`b266586`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/b266586870276669a253a971fea88c15a446095b))
+
+### Features
+
+- Add aegis hovers
+  ([`aae75f7`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/aae75f769bf143799707389284b935bf36d45e16))
 
 
 ## v0.4.0 (2026-01-17)
