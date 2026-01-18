@@ -1,7 +1,15 @@
 # CHANGELOG
 
 
+## v0.4.0 (2026-01-17)
+
+
 ## v0.3.0 (2026-01-17)
+
+### Features
+
+- Aegis support
+  ([`cd143fd`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/cd143fd09db92efe9d5b458928663eb0e3525565))
 
 
 ## v0.2.3 (2026-01-17)
