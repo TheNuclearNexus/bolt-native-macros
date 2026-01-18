@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  PYTHON_VERSION: "3.11"
+  PYTHON_VERSION: "3.14"
   POETRY_VERSION: "1.6.1"
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
         run: uv sync --all-groups
       - name: Run tests
         run: uv run pytest -v
-      - name: Check formatti~=7.33.0
+      - name: Check formatting
 
         run: uv run ruff check
 
