@@ -9,7 +9,7 @@ from bolt import (
     visit_generic,
     visit_single,
 )
-from mecha import AstCommand, AstNode, Visitor, rule
+from mecha import AstNode, Visitor, rule
 
 from .ast import AstMacroArgument, AstMacroExpression, AstMacroStringWrapper
 from .typing import (
