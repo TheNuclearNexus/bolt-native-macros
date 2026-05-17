@@ -1,11 +1,11 @@
 from contextlib import suppress
 from typing import Any
 
-from mecha import AstNbt, AstNbtValue, AstNode, AstNumber
+from mecha import AstNbt
 from nbtlib import Serializer as NbtSerializer
 
 
-from .ast import AstMacroNbtArgument, AstMacroNumber
+from .ast import AstMacroNbtArgument
 from .serialize import serialize_macro
 from .typing import MacroTag
 
