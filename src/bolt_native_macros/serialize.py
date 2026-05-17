@@ -22,13 +22,17 @@ from .ast import (
     AstMacroArgument,
     AstMacroCoordinateArgument,
     AstMacroNbtArgument,
-    AstMacroNbtCompoundKey,
+    AstNbtCompoundKeyWithMacro,
     AstMacroNbtPathArgument,
     AstMacroNbtPathKeyArgument,
     AstMacroRange,
     AstMacroStringWrapper,
+    AstNbtCompoundWithMacro,
+    AstNbtListWithMacro,
 )
 from .typing import (
+    DictWithMacro,
+    ListWithMacro,
     MacroRepresentation,
     MacroTag,
     QuotedStringWithMacro,
@@ -53,6 +57,13 @@ class MacroConverter:
     node_type: type
 
     def __call__(self, obj: Any, node: AstNode) -> AstNode:
+        if isinstance(obj, DictWithMacro):
+            return AstNbtCompoundWithMacro.from_value(obj)
+        if isinstance(obj, ListWithMacro):
+            return AstNbtListWithMacro.from_value(obj)
+        if isinstance(obj, MacroTag):
+            return AstMacroNbtArgument.from_value(obj)
+        
         if isinstance(obj, QuotedStringWithMacro):
             return self.node_type.from_value(obj)
         if isinstance(obj, StringWithMacro):
@@ -106,7 +117,7 @@ class CommandSerializer(Visitor):
                 break
 
     def default(
-        self, argument: AstMacroArgument | AstMacroNbtCompoundKey, result: list[str]
+        self, argument: AstMacroArgument | AstNbtCompoundKeyWithMacro, result: list[str]
     ):
         string = argument.parser == "string"
         if string:
@@ -148,8 +159,8 @@ class CommandSerializer(Visitor):
             sep = "."
             yield component
 
-    @rule(AstMacroNbtCompoundKey)
-    def nbt_compound_key(self, node: AstMacroNbtCompoundKey, result: list[str]):
+    @rule(AstNbtCompoundKeyWithMacro)
+    def nbt_compound_key(self, node: AstNbtCompoundKeyWithMacro, result: list[str]):
         self.default(node, result)
 
     @rule(AstMacroRange)

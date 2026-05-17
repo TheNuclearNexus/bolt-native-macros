@@ -23,7 +23,7 @@ from .typing import StringWithMacro
 from .ast import (
     AstMacroArgument,
     AstMacroCoordinateArgument,
-    AstMacroNbtCompoundKey,
+    AstNbtCompoundKeyWithMacro,
     AstMacroNbtPathArgument,
     AstMacroNbtPathKeyArgument,
     AstMacroRange,
@@ -81,7 +81,7 @@ class MacroNbtParser:
         if commit.rollback:
             return self.nbt_parser(stream)
 
-        key_node = AstMacroNbtCompoundKey(
+        key_node = AstNbtCompoundKeyWithMacro(
             value=StringWithMacro(f"$({macro_arg.name})"),
             name=macro_arg.name,
             parser=macro_arg.parser,

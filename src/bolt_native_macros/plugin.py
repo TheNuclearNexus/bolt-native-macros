@@ -8,11 +8,13 @@ from .ast import (
     AstMacroExpression,
     AstMacroNbtArgument,
     AstMessageWithMacro,
+    AstNbtCompoundWithMacro,
+    AstNbtListWithMacro,
     AstNbtValueWithMacro,
     AstStringWithMacro,
     AstWordWithMacro,
 )
-from .codegen import MacroCodegen, ast_to_macro, make_macro_string
+from .codegen import MacroCodegen, ast_to_macro, make_macro_format_string, make_macro_string, HELPERS
 from .parse import (
     MacroNbtParser,
     MacroNbtPathParser,
@@ -65,6 +67,7 @@ conversions = {
     "interpolate_word": AstWordWithMacro,
     "interpolate_greedy": AstGreedyWithMacro,
     "interpolate_nbt": AstNbtValueWithMacro,
+    "interpolate_nbt_compound": AstNbtCompoundWithMacro,
     "interpolate_message": AstMessageWithMacro,
 }
 
@@ -86,8 +89,9 @@ def beet_default(ctx: Context):
     runtime = ctx.inject(Runtime)
 
     runtime.modules.codegen.extend(MacroCodegen())
-    runtime.helpers[ast_to_macro.__name__] = ast_to_macro
-    runtime.helpers[make_macro_string.__name__] = make_macro_string
+
+    for h in HELPERS:
+        runtime.helpers[h.__name__] = h
 
     for conversion, node_type in conversions.items():
         runtime.helpers[conversion] = MacroConverter(

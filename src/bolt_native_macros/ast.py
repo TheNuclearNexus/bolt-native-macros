@@ -5,7 +5,9 @@ from beet.core.utils import required_field
 from mecha import (
     AstGreedy,
     AstMessage,
+    AstNbtCompound,
     AstNbtCompoundKey,
+    AstNbtList,
     AstNbtValue,
     AstNode,
     AstString,
@@ -41,6 +43,10 @@ class AstMacroNbtArgument(AstMacroArgument):
     def evaluate(self):
         return MacroTag(self.name, self.parser)
 
+    @classmethod
+    def from_value(cls, macro: MacroTag):
+        return AstMacroNbtArgument(name=macro.name, parser=macro.parser)
+
 
 @dataclass(frozen=True, slots=True)
 class AstMacroCoordinateArgument(AstMacroArgument):
@@ -66,6 +72,10 @@ class AstMacroRange(AstNode):
 
 
 @dataclass(frozen=True, slots=True)
+class AstMacroNumber(AstNode):
+    value: int | float | AstMacroArgument = required_field()
+
+@dataclass(frozen=True, slots=True)
 class AstMacroStringWrapper[N](AstNode):
     child: N = required_field()
 
@@ -74,11 +84,11 @@ class AstMacroStringWrapper[N](AstNode):
 class AstNbtValueWithMacro(AstNbtValue, MacroRepresentation):
     @classmethod
     def from_value(cls, value: Any) -> "AstNbtValueWithMacro":
-        return cls(value=value)
+        return AstNbtValueWithMacro(value=value)
 
 
 @dataclass(frozen=True, slots=True)
-class AstMacroNbtCompoundKey(AstNbtCompoundKey, MacroRepresentation):
+class AstNbtCompoundKeyWithMacro(AstNbtCompoundKey, MacroRepresentation):
     name: str = required_field()
     parser: str | None = required_field()
 
@@ -109,3 +119,17 @@ class AstMessageWithMacro(AstMessage, MacroRepresentation):
     @classmethod
     def from_value(cls, value: Any) -> "AstMessageWithMacro":
         return cls(fragments=AstMessage.from_value(value).fragments)
+
+
+@dataclass(frozen=True, slots=True)
+class AstNbtCompoundWithMacro(AstNbtCompound, MacroRepresentation):
+    @classmethod
+    def from_value(cls, value: Any) -> "AstNbtCompoundWithMacro":
+        return cls(entries=AstNbtCompound.from_value(value).entries)
+
+
+@dataclass(frozen=True, slots=True)
+class AstNbtListWithMacro(AstNbtList, MacroRepresentation):
+    @classmethod
+    def from_value(cls, value: Any) -> "AstNbtListWithMacro":
+        return cls(elements=AstNbtList.from_value(value).elements)

@@ -7,14 +7,17 @@ from nbtlib import Base
 class MacroRepresentation: ...
 
 
-class QuotedStringWithMacro(str): ...
+class QuotedStringWithMacro(str, MacroRepresentation): ...
 
 
-class StringWithMacro(str): ...
+class StringWithMacro(str, MacroRepresentation): ...
 
+class DictWithMacro(dict, MacroRepresentation): ...
+
+class ListWithMacro(list, MacroRepresentation): ...
 
 @dataclass
-class MacroTag(Base):
+class MacroTag(Base, MacroRepresentation):
     name: str = required_field()
     parser: str | None = required_field()
 
@@ -23,3 +26,6 @@ class MacroTag(Base):
 
     def __str__(self):
         return f"$({self.name})"
+    
+    def __hash__(self) -> int:
+        return hash(hash(self.name) + hash(self.parser))
