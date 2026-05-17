@@ -1,6 +1,28 @@
 # CHANGELOG
 
 
+## v0.5.2 (2026-05-17)
+
+### Bug Fixes
+
+- Better string inter
+  ([`5d0e9a7`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/5d0e9a75bc0cc3ee550ffe4c746c49c8f364c1c6))
+
+- Snapshots
+  ([`7385065`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/73850655d0410e85c3330ddcadb831857d90e439))
+
+### Chores
+
+- Lint
+  ([`82fa9c1`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/82fa9c1754acbeaf6ceafa38c3fc4866f9294137))
+
+- Lint
+  ([`83ed56c`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/83ed56c3cbd41bbfc875a2e8e2104dcdc4776c06))
+
+- Lint
+  ([`2257304`](https://github.com/TheNuclearNexus/bolt-native-macros/commit/225730422835af12318e567ba09a159b49b03757))
+
+
 ## v0.5.1 (2026-01-18)
 
 ### Bug Fixes
