@@ -9,12 +9,11 @@ from .ast import (
     AstMacroNbtArgument,
     AstMessageWithMacro,
     AstNbtCompoundWithMacro,
-    AstNbtListWithMacro,
     AstNbtValueWithMacro,
     AstStringWithMacro,
     AstWordWithMacro,
 )
-from .codegen import MacroCodegen, ast_to_macro, make_macro_format_string, make_macro_string, HELPERS
+from .codegen import MacroCodegen, HELPERS
 from .parse import (
     MacroNbtParser,
     MacroNbtPathParser,
